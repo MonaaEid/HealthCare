@@ -46,7 +46,7 @@ def storeDoctor():
     return jsonify(data), 201
 
 
-@app_views.route('/doctors/<doctor_id>', methods=['DELETE'], strict_slashes=False)
+@app_views.route('/doctors/<doctor_id>/del/', methods=['POST'], strict_slashes=False)
 def deleteDoctor(doctor_id):
     """ deleteDoctor route """
     doctor = storage.get(Doctor, doctor_id)

@@ -7,7 +7,7 @@ from flask_cors import CORS
 from os import environ
 
 app = Flask(__name__)
-# app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.secret_key = "super secret key"
 app.register_blueprint(app_views)
 # cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})

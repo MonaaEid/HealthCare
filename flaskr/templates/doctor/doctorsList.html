@@ -5,7 +5,7 @@
 <table>
     <tr>
         <th>Doctor Name</th>
-        <th>Doctor id</th>
+        <th>Doctor Salary</th>
         <th>Phone</th>
         <th>Email</th>
         <th>Address</th>
@@ -15,13 +15,13 @@
     {% for doctor in doctors %}
     <tr>
         <td>{{ doctor.name }}</td>
-        <td>{{ doctor.id }}</td>
+        <td>{{ doctor.salary }}</td>
         <td>{{ doctor.phone }}</td>
         <td>{{ doctor.email }}</td>
         <td>{{ doctor.address }}</td>
-        <td><a href="/doctor/{{doctor.id}}/del/">Delete</a></td>
+        <!-- <td><a href="/doctors/{{doctor.id}}/del/">Delete</a></td> -->
         <td><a href="/doctors/{{ doctor.id }}">Edit</a></td>
-        <td><form action="/doctors/{{ doctor.id }}" method="DELETE" enctype="multipart/form-data"> <input type="submit" value="Delete"></form></td>
+        <td><form action="/doctors/{{ doctor.id }}/del" method="post" enctype="multipart/form-data"> <input type="submit" value="Delete"></form></td>
         <!-- <td><a href="/doctors/{{ doctor.id }}/appointments">Appointments</a></td> -->
 
     </tr>

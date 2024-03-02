@@ -2,7 +2,8 @@
 """
 Contains the class DBStorage
 """
-
+# from models import storage
+import models
 from models.base_model import BaseModel, Base
 from models.doctor import Doctor
 from models.patient import Patient
