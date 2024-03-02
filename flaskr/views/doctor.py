@@ -49,7 +49,7 @@ def storeDoctor():
 @app_views.route('/doctors/<doctor_id>', methods=['DELETE'], strict_slashes=False)
 def deleteDoctor(doctor_id):
     """ deleteDoctor route """
-    doctor = storage.get("Doctor", doctor_id)
+    doctor = storage.get(Doctor, doctor_id)
     if doctor is None:
         abort(404)
     doctor.delete()
@@ -60,7 +60,7 @@ def deleteDoctor(doctor_id):
 @app_views.route('/doctors/<doctor_id>', methods=['PUT'], strict_slashes=False)
 def updateDoctor(doctor_id):
     """ updateDoctor route """
-    doctor = storage.get("Doctor", doctor_id)
+    doctor = storage.get(Doctor, doctor_id)
     if doctor is None:
         abort(404)
     doctor.name = request.form.get("name")

@@ -5,6 +5,7 @@
 <table>
     <tr>
         <th>Doctor Name</th>
+        <th>Doctor id</th>
         <th>Phone</th>
         <th>Email</th>
         <th>Address</th>
@@ -14,6 +15,7 @@
     {% for doctor in doctors %}
     <tr>
         <td>{{ doctor.name }}</td>
+        <td>{{ doctor.id }}</td>
         <td>{{ doctor.phone }}</td>
         <td>{{ doctor.email }}</td>
         <td>{{ doctor.address }}</td>
