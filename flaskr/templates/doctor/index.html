@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
-{% block body %}
-<form action="/storeDoctor" method="post">
+{% block content %}
+<form action="/doctors" method="post">
 
     <h1> hello, {{ name }}</h1>
     <label for="name">name:</label></label> <input type="text" name="name" id="name">
@@ -8,7 +8,7 @@
     <label for="salary">Salary:</label></label><input type="text" name="salary" id="salary">
     <label for="phone">phone:</label><input type="text" name="phone" id="phone">
     <label for="address">address:</label><input type="text" name="address" id="address">
-    <label for="gender">gender:</label><input type="radio" name="gender" value="Female" id ="gender"> <input type="radio" value="male" name="gender">
+    <label for="gender">gender:</label><input type="radio" name="gender" value="F" id ="gender"> <input type="radio" value="M" name="gender">
 
 
     <input type="submit" value="Submit">

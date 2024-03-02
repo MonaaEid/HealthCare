@@ -10,9 +10,9 @@ class Employee(BaseModel, Base):
     """Representation of a user """
     __tablename__ = 'employees'
     name = Column(String(128), nullable=False)
-    birth_date = Column(String(128), nullable=False)
+    birth_date = Column(String(128))
     gender = Column(Enum, nullable=False)
-    email = Column(String(128), nullable=False)
+    email = Column(String(128))
     phone = Column(String(128), nullable=False)
-    address = Column(String(128), nullable=False)
-    salary = Column(Integer, nullable=False)
+    address = Column(String(128))
+    salary = Column(Integer)
