@@ -16,7 +16,7 @@ class Doctor(BaseModel, Base):
     phone = Column(String(128))
     address = Column(String(128))
     # specializations = relationship("Specialization", secondary="doctor_specialization")
-    # appointments = relationship("Appointment", back_populates="doctor")
+    # appointments = relationship("Appointment", back_populates="doctor") 
     # patients = relationship("Patient", secondary="appointments")
     salary = Column(Integer, nullable=False)
     # department_id = Column(String(60), ForeignKey('departments.id'), nullable=False)
