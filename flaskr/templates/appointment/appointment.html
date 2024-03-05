@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="post" action="/doctors/appointments">
+    <h1>Book an appointment</h1>
+    <button
+  hx-get="/patient" 
+  hx-target="#output"
+>new patient history</button>
+<div id="output"></div>
+    <label for="doctor_id">Doctor</label>
+    <select name="doctor_id" id="">
+        {% for doctor in doctors %}
+            <option value="{{ doctor.id }}">{{ doctor.name }}</option>
+        {% endfor %}
+    </select>
+    <label for="department">Department:</label>
+    <select name="department" id="department">
+        option
+        {% for department in departments %}
+            <option value="{{ department.id }}">{{ department.name }}</option>
+        {% endfor %}
+    </select>
+    <label for="date">Date:</label>
+    <input type="date" name="date" id="date">
+    <label for="time">Time:</label>
+    <input type="time" name="time" id="time">
+    <input type="submit" value="Book">
+</form>
+{% endblock %}

@@ -9,10 +9,10 @@ from sqlalchemy.orm import relationship
 class Employee(BaseModel, Base):
     """Representation of a user """
     __tablename__ = 'employees'
-    name = Column(String(128), nullable=False)
-    birth_date = Column(String(128))
-    gender = Column(Enum, nullable=False)
-    email = Column(String(128))
-    phone = Column(String(128), nullable=False)
-    address = Column(String(128))
-    salary = Column(Integer)
+    name = Column(String(128), nullable=False) #exist
+    birth_date = Column(String(128)) #exist
+    gender = Column(Enum("M", "F"), nullable=False) #exist
+    email = Column(String(128)) #exist
+    phone = Column(String(128), nullable=False) #exist
+    address = Column(String(128)) #exist
+    salary = Column(Integer) #exist

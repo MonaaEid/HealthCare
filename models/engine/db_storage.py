@@ -8,11 +8,14 @@ from models.base_model import BaseModel, Base
 from models.doctor import Doctor
 from models.patient import Patient
 from models.user import User
+from models.department import Department
+from models.employee import Employee
+from models.appointment import Appointment
 from os import getenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-classes = {"Doctor": Doctor, "Patient": Patient, "User": User}
+classes = {"Doctor": Doctor, "Patient": Patient, "User": User, "Department": Department, "Employee": Employee, "Appointment": Appointment}
 
 
 class DBStorage:

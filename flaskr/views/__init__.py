@@ -7,3 +7,5 @@ app_views = Blueprint('app_views', __name__, url_prefix='/')
 from flaskr.views.index import *
 from flaskr.views.doctor import *
 from flaskr.views.auth import *
+from flaskr.views.patient import *
+from flaskr.views.appointment import *
