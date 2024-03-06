@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script src="./filter.js"></script>
+    
+    
+</head>
+<body>
+     <header>
+    <!-- Header Start -->
+    <div class="header-area">
+        <a href="../index.html"><img src="../assets/logo/hospital-logo.png" alt=""></a>
+    </div>
+    <!-- Header End -->
+    </header>
+    <!-- start side ber -->
+    <nav class="side-nav">
+    <ul>
+      <li><a href="../index.html" >Dashboard</a></li>
+      <li><a href="../appointment/appoinments.html" class="active">Appointments</a></li>
+      <li><a href="../patient/patients.html">Patients</a></li>
+      <li><a href="../doctor/doctors.html">Doctors</a></li>
+      <li><a href="../department/departments.html">Departments</a></li>
+    
+    </ul>
+  </nav>
+
+<!-- filter  -->
+</div>
+    <div class="outer-wrapper">
+    <div class="table-wrapper">
+    <table id="emp-table">
+        <thead>
+            <th col-index = 1>patient ID</th>
+            <th col-index = 2>patient Name</th>
+            <th col-index = 3>Gender
+                <select class="table-filter" onchange="filter_rows()">
+                    <option value="all"></option>
+                </select>
+            </th>
+
+            <th col-index = 4>Department
+                <select class="table-filter" onchange="filter_rows()">
+                    <option value="all"></option>
+                </select>
+            </th>
+            <th col-index = 5>Doctor
+                <select class="table-filter" onchange="filter_rows()">
+                    <option value="all"></option>
+                </select>
+            </th>
+            <th col-index = 6>Date
+                <select class="table-filter" onchange="filter_rows()">
+                    <option value="all"></option>
+                </select>
+            </th>
+            
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>ahmed</td>
+                <td>M</td>
+                <td>children</td>
+                <td>A</td>
+                <td>1-5-2024</td>
+            </tr>
+            
+           
+            
+            <tr>
+                <td>201</td>
+                <td>mohamed</td>
+                <td>F</td>
+                <td>children</td>
+                <td>B</td>
+                <td>1-5-2024</td>
+            </tr>
+            <tr>
+                <td>202</td>
+                <td>mohamed</td>
+                <td>F</td>
+                <td>children</td>
+                <td>C</td>
+                <td>1-5-2024</td>
+            </tr>
+            <tr>
+                <td>203</td>
+                <td>mohamed</td>
+                <td>M</td>
+                <td>children</td>
+                <td>D</td>
+                <td>1-5-2024</td>
+            </tr>
+            <tr>
+                <td>204</td>
+                <td>mohamed</td>
+                <td>M</td>
+                <td>children</td>
+                <td>E</td>
+                <td>1-5-2024</td>
+            </tr>
+            
+           
+            
+            
+
+        </tbody>
+    </table>
+    <!-- <script>getUniqueValuesFromColumn()
+    </script> -->
+    <script>
+        window.onload = () => {
+            console.log(document.querySelector("#emp-table > tbody > tr:nth-child(1) > td:nth-child(2) ").innerHTML);
+        };
+
+        getUniqueValuesFromColumn()
+        
+    </script>
+    
+</div>
+</div>  
+     
+    
+</body>
+</html>
