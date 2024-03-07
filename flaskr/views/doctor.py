@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 """ holds the main app """
-from flask import Flask, jsonify, request, abort, render_template, make_response
+from flask import Flask, jsonify, request, abort, render_template, make_response, session
 from flasgger.utils import swag_from
 from models import storage
+# from models import db
 from models.doctor import Doctor
 from flaskr.views import app_views
+from models.engine.db_storage import DBStorage
 
 @app_views.route('/', methods=['GET'], strict_slashes=False)
 def index():
@@ -16,8 +18,12 @@ def index():
 @app_views.route('/doctors', methods=['GET'], strict_slashes=False)
 def doctor():
     """ doctor route """
-    doctors =  [doctor.to_dict() for doctor in storage.all("Doctor").values()]
+    # doctors =  [doctor.to_dict() for doctor in storage.all("Doctor").values()]
+    
+    doctors = storage.query(Doctor).limit(3).all()
+    # doctors = storage.query(Doctor).all()
     return render_template('doctor/doctorsList.html', doctors=doctors)
+    # return str(doctors)
 
 
 @app_views.route('/doctors/<doctor_id>', methods=['GET'], strict_slashes=False)

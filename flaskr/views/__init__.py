@@ -9,3 +9,4 @@ from flaskr.views.doctor import *
 from flaskr.views.auth import *
 from flaskr.views.patient import *
 from flaskr.views.appointment import *
+# from flaskr.views.department import *

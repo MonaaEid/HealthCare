@@ -12,13 +12,13 @@
 {% endif %}
 
 {% if flag == 1 %}
-<form action="/patient" method="post">
+<form action="/patients/{{ patient.id }}" method="post">
 
     <h1>Add a patient record mmm</h1>
     <label for="name">name:</label> <input type="text" name="name" id="name" value="{{ patient.name }}">
     <label for="birthdate">birthdate:</label><input type="date" name="birthdate" id="birthdate" value="{{ patient.birth_date }}">
     <label for="phone">phone:</label><input type="text" name="phone" id="phone" value="{{ patient.phone }}">
-    <label for="gender">gender:</label>Female:<input type="radio" name="gender" value="F" id ="gender" value="{{ patient.gender }}"> Male:<input type="radio" value="M" name="gender">
+    <label for="gender">gender:</label>Female:<input type="radio" name="gender" value="F" id ="gender"> Male:<input type="radio" value="M" name="gender">
 
     <input type="submit" value="Submit">
 </form>

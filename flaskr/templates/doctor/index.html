@@ -1,16 +1,64 @@
 {% extends "layout.html" %}
 {% block content %}
-<form action="/doctors" method="post">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<div class="container">
+<form class="form-horizontal" action="/doctors" method="post">
 
-    <h1> hello, {{ name }}</h1>
-    <label for="name">name:</label></label> <input type="text" name="name" id="name">
-    <label for="email">email:</label><input type="text" name="email" id="email">
-    <label for="salary">Salary:</label></label><input type="text" name="salary" id="salary">
-    <label for="phone">phone:</label><input type="text" name="phone" id="phone">
-    <label for="address">address:</label><input type="text" name="address" id="address">
-    <label for="gender">gender:</label><input type="radio" name="gender" value="F" id ="gender"> <input type="radio" value="M" name="gender">
+    <!-- <h1> hello, {{ name }}</h1> -->
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="name">name:</label>
+        <div class="col-sm-10">
+            <input type="text" name="name" id="name" class="form-control">
+        </div>
+    </div>
 
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="email">email:</label>
+        <div class="col-sm-10">
+            <input type="text" name="email" id="email" class="form-control">
+        </div>
+    </div>
 
-    <input type="submit" value="Submit">
+    <div class="form-group">    
+        <label class="control-label col-sm-2" for="salary">Salary:</label>
+        <div class="col-sm-10">
+            <input type="text" name="salary" id="salary" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="phone">phone:</label>
+        <div class="col-sm-10">
+            <input type="text" name="phone" id="phone" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="address">address:</label>
+        <div class="col-sm-10">
+            <input type="text" name="address" id="address" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="birthdate">birthdate:</label>
+        <div class="col-sm-10">
+            <input type="date" name="birthdate" id="birthdate" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="gender">gender:</label>
+        Female<input type="radio" name="gender" value="F" id ="gender"> 
+        Male<input type="radio" value="M" name="gender">
+    </div>
+    <div class="form-group">        
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="submit" value="Submit" class="btn btn-default">
+        </div>
+    </div>
 </form>
+</div>
 {% endblock %}

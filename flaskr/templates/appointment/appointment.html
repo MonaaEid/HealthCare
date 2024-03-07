@@ -4,8 +4,7 @@
     <h1>Book an appointment</h1>
     <button
   hx-get="/patient" 
-  hx-target="#output"
->new patient history</button>
+  hx-target="#output">new patient history</button>
 <div id="output"></div>
     <label for="doctor_id">Doctor</label>
     <select name="doctor_id" id="">
@@ -13,9 +12,14 @@
             <option value="{{ doctor.id }}">{{ doctor.name }}</option>
         {% endfor %}
     </select>
-    <label for="department">Department:</label>
-    <select name="department" id="department">
-        option
+    <label for="patient_id">Patient</label>
+    <select name="patient_id" id="">
+        {% for patient in patients %}
+            <option value="{{ patient.id }}">{{ patient.name }}</option>
+        {% endfor %}
+    </select>
+    <label for="department_id">Department:</label>
+    <select name="department_id" id="department_id">
         {% for department in departments %}
             <option value="{{ department.id }}">{{ department.name }}</option>
         {% endfor %}

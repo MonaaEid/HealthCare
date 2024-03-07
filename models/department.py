@@ -12,7 +12,7 @@ class Department(BaseModel, Base):
     name = Column(String(128), nullable=False) #exist
     description = Column(String(128)) #exist
     department_head_id = Column(String(60), ForeignKey('doctors.id')) #exist
-
+    appointments = relationship('Appointment', backref='department')
     # doctors = relationship("Doctor", secondary="doctor_department")
     # patients = relationship("Patient", secondary="patient_department")
     # appointments = relationship("Appointment", secondary="appointment_department")

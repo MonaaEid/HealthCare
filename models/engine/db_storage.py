@@ -64,6 +64,11 @@ class DBStorage:
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
         self.__session = Session
+    
+    def query(self, cls):
+        """reloads data from the database"""
+        # self.reload()
+        return self.__session.query(cls)
 
     def close(self):
         """call remove() method on the private session attribute"""
@@ -81,8 +86,20 @@ class DBStorage:
         for value in all_cls.values():
             if (value.id == id):
                 return value
-
         return None
+
+
+    def get_email(self, email):
+        """
+        Returns the object based on the class name and its email, or
+        None if not found
+        """
+        all_users = models.storage.all(User)
+        for value in all_users.values():
+            if (value.email == email):
+                return value
+        return None
+
 
     def count(self, cls=None):
         """

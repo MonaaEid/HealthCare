@@ -7,6 +7,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from models import storage
 from flaskr.views import app_views
 from models.user import User
+from hashlib import md5
+
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -15,7 +17,8 @@ def register():
     if request.method == 'POST':
         first_name = request.form['name']
         email = request.form['email']
-        password = request.form['password']
+        password= request.form['password']
+        # password = generate_password_hash(passw)
         # db = get_db()
         error = None
 
@@ -32,7 +35,7 @@ def register():
                 instance = User(**data)
                 instance.save()
             except:
-                error = f"User {first_name} is already registered."
+                error = f"Email {email} is already registered."
         else:
             return redirect(url_for("auth.login"))
 
@@ -44,23 +47,22 @@ def register():
 @app_views.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        # db = get_db()
+        email = request.form.get('email')
+        password = request.form.get('password')
         error = None
-        # user = db.execute(
-        #     'SELECT * FROM user WHERE username = ?', (username,)
-        # ).fetchone()
-        user = storage.get(User, email)[0]
-        if user is None:
+        user = storage.get_email(email)
+        user_passw = user.password
+        passw = md5(password.encode()).hexdigest()
+        if user is  None:
             error = 'Incorrect email.'
-        elif not check_password_hash(user['password'], password):
+        # elif not check_password_hash(user.password, password):
+        elif user_passw != passw:
             error = 'Incorrect password.'
 
         if error is None:
             session.clear()
-            session['user_id'] = user['id']
-            return redirect(url_for('/'))
+            session['user_id'] = user.id
+            return redirect(url_for('app_views.doctor'))
 
         flash(error)
 
@@ -74,9 +76,6 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        # g.user = get_db().execute(
-        #     'SELECT * FROM user WHERE id = ?', (user_id,)
-        # ).fetchone()
         g.user = storage.get(User, user_id)
 
 
@@ -84,7 +83,7 @@ def load_logged_in_user():
 @app_views.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('app_views.index'))
 
 
 def login_required(view):

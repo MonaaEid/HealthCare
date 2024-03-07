@@ -5,9 +5,8 @@ from flasgger.utils import swag_from
 from models import storage
 from models.doctor import Doctor
 from models.appointment import Appointment
-from models.department import Department
+# from models.department import Department
 from flaskr.views import app_views
-
 
 @app_views.route('/doctors/<doctor_id>/appointments', methods=['GET'], strict_slashes=False)
 def doctorAppointments(doctor_id):
@@ -15,8 +14,9 @@ def doctorAppointments(doctor_id):
     doctor = storage.get(Doctor, doctor_id)
     if doctor is None:
         abort(404)
-    appointments = [appointment.to_dict() for appointment in doctor.appointments]
-    return jsonify(appointments)
+    # appointments = [appointment.to_dict() for appointment in doctor.appointments]
+    appointments = storage.query(Appointment).filter(Appointment.doctor_id == doctor_id).all()
+    return render_template('appointment/appointmentsList.html', appointments=appointments)
 
 
 @app_views.route('/doctors/appointments', methods=('GET', 'POST'), strict_slashes=False)
@@ -27,16 +27,17 @@ def storeAppointment():
         # if doctor is None:
         #     abort(404)
         doctor_id = request.form.get("doctor_id")
-        # patient_id = request.form.get("patient_id")
+        patient_id = request.form.get("patient_id")
+        department_id = request.form.get("department_id")
         date = request.form.get("date")
-        time = request.form.get("time")
-        data = {"doctor_id": doctor_id, "date": date}
+        data = {"doctor_id": doctor_id, "date": date, "patient_id": patient_id, "department_id": department_id}
         instance = Appointment(**data)
         instance.save()
         return jsonify(data), 201
     doctors = [doctor.to_dict() for doctor in storage.all("Doctor").values()]
     departments = [department.to_dict() for department in storage.all("Department").values()]
-    return render_template('appointment/appointment.html', doctors=doctors, departments=departments)
+    patients = [patient.to_dict() for patient in storage.all("Patient").values()]
+    return render_template('appointment/appointment.html', doctors=doctors, departments=departments, patients=patients)
 
 @app_views.route('/doctors/<doctor_id>/appointments/<appointment_id>', methods=['GET'], strict_slashes=False)
 def appointmentById(doctor_id, appointment_id):

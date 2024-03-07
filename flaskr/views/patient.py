@@ -18,13 +18,13 @@ def patient():
     return render_template('patient/patientsList.html', patients=patients)
 
 
-@app_views.route('/patients/<patient_id>', methods=['GET'], strict_slashes=False)
-def patientById(patient_id):
-    """ patientById route """
-    patient = storage.get("Patient", patient_id)
-    if patient is None:
-        abort(404)
-    return jsonify(patient.to_dict())
+# @app_views.route('/patients/<patient_id>', methods=['GET'], strict_slashes=False)
+# def patientById(patient_id):
+#     """ patientById route """
+#     patient = storage.get("Patient", patient_id)
+#     if patient is None:
+#         abort(404)
+#     return jsonify(patient.to_dict())
 
 
 @app_views.route('/patient', methods=['POST', 'GET'], strict_slashes=False)
@@ -53,15 +53,15 @@ def deletePatient(patient_id):
         abort(404)
     patient.delete()
     storage.save()
-    return redirect(url_for('patients'))
+    return redirect(url_for('app_views.patients'))
 
 
 @app_views.route('/patients/<patient_id>', methods=['POST', 'GET'], strict_slashes=False)
 def updatePatient(patient_id):
     """ updatePatient route """
     patient = storage.get(Patient, patient_id)
-    if patient is None:
-        abort(404)
+    # if patient is None:
+    #     abort(404)
     if request.method == 'GET':
         flag = 1
         patient = storage.get(Patient, patient_id)

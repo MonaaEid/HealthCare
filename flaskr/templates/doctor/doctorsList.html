@@ -11,6 +11,7 @@
         <th>Address</th>
         <th></th>
         <th></th>
+        <th></th>
     </tr>
     {% for doctor in doctors %}
     <tr>
@@ -22,7 +23,7 @@
         <!-- <td><a href="/doctors/{{doctor.id}}/del/">Delete</a></td> -->
         <td><a href="/doctors/{{ doctor.id }}">Edit</a></td>
         <td><form action="/doctors/{{ doctor.id }}/del" method="post" enctype="multipart/form-data"> <input type="submit" value="Delete"></form></td>
-        <!-- <td><a href="/doctors/{{ doctor.id }}/appointments">Appointments</a></td> -->
+        <td><a href="/doctors/{{ doctor.id }}/appointments">Appointments</a></td>
 
     </tr>
     {% endfor %}
