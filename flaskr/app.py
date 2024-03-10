@@ -11,7 +11,7 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.secret_key = "super secret key"
 app.register_blueprint(app_views)
 # cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
-# cors = CORS(app, resources={r"/*": {"origins": "*"}})
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.teardown_appcontext

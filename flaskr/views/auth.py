@@ -10,9 +10,9 @@ from models.user import User
 from hashlib import md5
 
 
-bp = Blueprint('auth', __name__, url_prefix='/auth')
+bp = Blueprint("auth", __name__, url_prefix="/auth")
 
-@app_views.route('/register', methods=('GET', 'POST'))
+@bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
         first_name = request.form['name']
@@ -44,7 +44,7 @@ def register():
     return render_template('auth/register.html')
 
 
-@app_views.route('/login', methods=('GET', 'POST'))
+@bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
@@ -62,14 +62,14 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('app_views.doctor'))
+            return redirect('/')
 
         flash(error)
 
     return render_template('auth/login.html')
 
 
-@app_views.before_app_request
+@bp.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
 
@@ -80,7 +80,7 @@ def load_logged_in_user():
 
 
 
-@app_views.route('/logout')
+@bp.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('app_views.index'))

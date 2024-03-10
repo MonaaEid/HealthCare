@@ -5,7 +5,6 @@ from flasgger.utils import swag_from
 from models import storage
 from models.doctor import Doctor
 from models.appointment import Appointment
-# from models.department import Department
 from flaskr.views import app_views
 
 @app_views.route('/doctors/<doctor_id>/appointments', methods=['GET'], strict_slashes=False)
