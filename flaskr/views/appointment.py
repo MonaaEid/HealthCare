@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ holds the main app """
-from flask import Flask, jsonify, request, abort, render_template, make_response
+from flask import Flask, jsonify, request, abort, render_template, flash
 from flasgger.utils import swag_from
 from models import storage
 from models.doctor import Doctor
@@ -15,6 +15,8 @@ def doctorAppointments(doctor_id):
         abort(404)
     # appointments = [appointment.to_dict() for appointment in doctor.appointments]
     appointments = storage.query(Appointment).filter(Appointment.doctor_id == doctor_id).all()
+    if appointments is None:
+        flash("No appointments found")
     return render_template('appointment/appointmentsList.html', appointments=appointments)
 
 

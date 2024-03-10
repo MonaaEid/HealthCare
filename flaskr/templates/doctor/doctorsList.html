@@ -1,7 +1,14 @@
 {% extends "layout.html" %}
+{% block header %}
+<div  class="headline">
+
+    <h1>Doctor List</h1>
+</div>
+<input type="button" value="Add doctor record" onclick="window.location.href='/doctor'">
+
+{% endblock %}
 {% block content %}
 
-<h1>Doctors List</h1>
 <table>
     <tr>
         <th>Doctor Name</th>

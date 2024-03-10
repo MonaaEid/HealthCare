@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/side-nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     <!-- intialize ajax -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -23,11 +25,11 @@
   </header>
     <nav class="side-nav">
         <ul>
-          <li><a href="index.html" class="active">Dashboard</a></li>
-          <li><a href="appointment/appoinments.html">Appointments</a></li>
-          <li><a href="patient/patients.html">Patients</a></li>
-          <li><a href="doctor/doctors.html">Doctors</a></li>
-          <li><a href="department/departments.html">Departments</a></li>
+          <li><a href="#" class="active">Dashboard</a></li>
+          <li><a href="/appointments">Appointments</a></li>
+          <li><a href="/patients">Patients</a></li>
+          <li><a href="/doctors">Doctors</a></li>
+          <li><a href="/department">Departments</a></li>
         
         </ul>
         <ul>
@@ -40,7 +42,7 @@
           {% endif %}
         </ul>
       </nav>
-      <section>
+      <section class="dashboard-container">
         <header>
             {% block header %}{% endblock %}
           </header>

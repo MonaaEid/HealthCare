@@ -16,6 +16,7 @@ from .auth import login_required
 
 
 @app_views.route('/doctors', methods=['GET'], strict_slashes=False)
+@login_required
 def doctor():
     """ doctor route """
     doctors = storage.query(Doctor).all()
