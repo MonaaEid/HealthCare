@@ -13,20 +13,22 @@ def doctorAppointments(doctor_id):
     doctor = storage.get(Doctor, doctor_id)
     if doctor is None:
         abort(404)
-    # appointments = [appointment.to_dict() for appointment in doctor.appointments]
     appointments = storage.query(Appointment).filter(Appointment.doctor_id == doctor_id).all()
     if appointments is None:
         flash("No appointments found")
     return render_template('appointment/appointmentsList.html', appointments=appointments)
 
 
-@app_views.route('/doctors/appointments', methods=('GET', 'POST'), strict_slashes=False)
+@app_views.route('/appointments', methods=['GET'], strict_slashes=False)
+def appointments():
+    """ appointments route """
+    appointments = storage.query(Appointment).all()
+    return render_template('appointment/appointmentsList.html', appointments=appointments)
+
+@app_views.route('/doctors/appointments', methods=['GET', 'POST'], strict_slashes=False)
 def storeAppointment():
     """ storeAppointment route """
     if request.method == 'POST':
-        # doctor = storage.get(Doctor, doctor_id)
-        # if doctor is None:
-        #     abort(404)
         doctor_id = request.form.get("doctor_id")
         patient_id = request.form.get("patient_id")
         department_id = request.form.get("department_id")

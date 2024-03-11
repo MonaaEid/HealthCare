@@ -8,15 +8,9 @@ from flaskr.views import app_views
 
 
 from .auth import login_required
-# @app_views.route('/', methods=['GET'], strict_slashes=False)
-# def index():
-#     """ index route """
-#     # name = request.args.get("name", "world")
-#     return render_template('doctor/addDoctor.html')
-
 
 @app_views.route('/doctors', methods=['GET'], strict_slashes=False)
-@login_required
+# @login_required
 def doctor():
     """ doctor route """
     doctors = storage.query(Doctor).all()

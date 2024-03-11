@@ -10,6 +10,12 @@ body, ul {
   body {
     background-color: #f5f5f5;
   }
+  .containerdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
   
   /* Header Styling */
   .header-area {

@@ -3,10 +3,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 {% if flag == 0 %}
+<h1>Add Doctor record</h1>
+
 <div class="container">
+
 <form class="form-horizontal" action="/doctor" method="post">
 
-    <!-- <h1> hello, {{ name }}</h1> -->
     <div class="form-group">
         <label class="control-label col-sm-2" for="name">name:</label>
         <div class="col-sm-10">
@@ -65,9 +67,10 @@
 
 {% if flag == 1 %}
 <div class="container">
+    <h1>Add Doctor record</h1>
+
     <form class="form-horizontal" action="/doctor" method="post">
     
-        <!-- <h1> hello, {{ name }}</h1> -->
         <div class="form-group">
             <label class="control-label col-sm-2" for="name">name:</label>
             <div class="col-sm-10">

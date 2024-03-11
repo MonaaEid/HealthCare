@@ -7,4 +7,4 @@ from flaskr.views import app_views
 @app_views.route('/', methods=['GET'], strict_slashes=False)
 def index():
     """ index route """
-    return render_template('index.html')
+    return render_template('landing_page/landing_page.html')
