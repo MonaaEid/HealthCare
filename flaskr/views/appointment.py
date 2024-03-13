@@ -32,7 +32,6 @@ def storeAppointment():
     """ storeAppointment route """
     if request.method == 'POST':
         doctor_id = request.form.get("doctor_id")
-        # patient_id = request.form.get("patient_id")
         patient_name = request.form.get("patient_name")
         department_id = request.form.get("department_id")
         date = request.form.get("date")
