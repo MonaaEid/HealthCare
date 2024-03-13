@@ -26,3 +26,4 @@ class Doctor(BaseModel, Base):
     address = Column(String(128)) #exist
     salary = Column(Integer, nullable=False) #exist
     appointments = relationship('Appointment', backref='doctor')
+    department = relationship('Department', backref='doctor')
