@@ -49,14 +49,15 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
+        passw = md5(password.encode()).hexdigest()
         error = None
         user = storage.get_email(email)
-        user_passw = user.password
-        passw = md5(password.encode()).hexdigest()
         if user is  None:
             error = 'Incorrect email.'
+        # user_passw = user.password
+        
         # elif not check_password_hash(user.password, password):
-        elif user_passw != passw:
+        elif user.password != passw:
             error = 'Incorrect password.'
 
         if error is None:
@@ -65,8 +66,6 @@ def login():
             return redirect('/doctors')
 
         flash(error)
-
-
     return render_template('auth/login.html')
 
 
