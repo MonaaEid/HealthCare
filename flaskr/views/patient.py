@@ -5,9 +5,11 @@ from flasgger.utils import swag_from
 from models import storage
 from models.patient import Patient
 from flaskr.views import app_views
+from .auth import login_required
 
 
 @app_views.route('/patients', methods=['GET'], strict_slashes=False)
+@login_required
 def patient():
     """ patient route """
     # patients =  [patient.to_dict() for patient in storage.all("Patient").values()]

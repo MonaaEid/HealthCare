@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="outer-wrapper">
+    <h1>Departments</h1>
+    <div class="table-wrapper">
+        <table id="emp-table">
+        <thead>
+            <tr>
+                <th>Department Name</th>
+                <th>Department Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for department in departments %}
+            <tr>
+                <td>{{ department.name }}</td>
+                <td>{{ department.description }}</td>
+                <td>
+                    <a href="{{ url_for('app_views.departments', id=department.id) }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('app_views.departments') }}" class="btn btn-primary">Add Department</a>
+</div>
+
+</div>
+
+{% endblock %}

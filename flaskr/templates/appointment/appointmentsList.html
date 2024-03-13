@@ -1,15 +1,18 @@
 {% extends "layout.html" %}
 {% block content %}
-
-<h1>Appointment List</h1>
-<table>
+<div class="outer-wrapper">
+    <div class="header">
+    <input type="button" value="Book an appointment" onclick="window.location.href='/doctors/appointments'">
+    </div>
+    <div class="table-wrapper">
+    <table id="emp-table">
+    <h2>Appointment List</h2>
     <tr>
         <th>Date</th>
         <th>Department</th>
         <th>Doctor</th>
         <th>patient name</th>
-        <!-- <th>patient</th> -->
-        <th></th>
+        <!-- <th></th> -->
         <th></th>
     </tr>
     {% for appointment in appointments %}
@@ -18,13 +21,13 @@
         <td>{{ appointment.department.name }}</td>
         <td>{{ appointment.doctor.name }}</td>
         <!-- <td>{{ appointment.patient_name }}</td> -->
-        <td>{{ appointment.patient.name }}</td>
-        <!-- <td><a href="/appointment/{{appointment.id}}/del/">Delete</a></td> -->
-        <td><a href="/appointment/{{ appointment.id }}">Edit</a></td>
-        <td><form action="/appointment/{{ appointment.id }}/del" method="post" enctype="multipart/form-data"> <input type="submit" value="Delete"></form></td>
-        <!-- <td><a href="/doctor/{{ appointment.id }}/appointments">Appointments</a></td> -->
-
+        <td>{{ appointment.patient_name }}</td>
+        <!-- <td><button class="btn btn-warning"><a href="/appointment/{{ appointment.id }}" style="color: white">Edit</a></button></td> -->
+        <td><form action="/appointment/{{ appointment.id }}/del" method="post" enctype="multipart/form-data"> <input style="background-color: #d9534f;" class="btn" type="submit" value="Delete"></form></td>
     </tr>
     {% endfor %}
 </table>
+</div>
+</div> 
+
 {% endblock %}

@@ -1,8 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
-
-<h1>Patient List</h1>
-<table>
+<div class="outer-wrapper">
+    <div class="header">
+    <input type="button" value="Add patient record" onclick="window.location.href='/patient'">
+    </div>
+    <div class="table-wrapper">
+    <table id="emp-table">
+    <h2>Patient List</h2>
     <tr>
         <th>Patient Name</th>
         <th>Gender</th>
@@ -20,11 +24,11 @@
         <td>{{ patient.birth_date }}</td>
         <td>{{ patient.address }}</td>
         <!-- <td><a href="/patient/{{patient.id}}/del/">Delete</a></td> -->
-        <td><a href="/patients/{{ patient.id }}">Edit</a></td>
-        <td><form action="/patients/{{ patient.id }}/del" method="post" enctype="multipart/form-data"> <input type="submit" value="Delete"></form></td>
-        <!-- <td><a href="/patient/{{ patient.id }}/appointments">Appointments</a></td> -->
-
+        <td><button class="btn btn-warning"><a href="/patients/{{ patient.id }}" style="color: white">Edit</a></button></td>
+        <td><form action="/patients/{{ patient.id }}/del" method="post" enctype="multipart/form-data"> <input style="background-color: #d9534f;" class="btn btn-danger" type="submit" value="Delete"></form></td>
     </tr>
     {% endfor %}
 </table>
+</div>
+</div> 
 {% endblock %}

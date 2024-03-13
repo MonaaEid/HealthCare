@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <!-- INTIALIZE Jquery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -27,17 +28,17 @@
   </header>
     <nav class="side-nav">
         <ul>
-          <li><a href="#" class="active">Dashboard</a></li>
+          <li><a href="/" class="">Home</a></li>
           <li><a href="/appointments">Appointments</a></li>
           <li><a href="/patients">Patients</a></li>
           <li><a href="/doctors">Doctors</a></li>
-          <li><a href="/department">Departments</a></li>
+          <li><a href="/departments">Departments</a></li>
         
         </ul>
         <ul>
           {% if g.user %}
           <li><a href="{{ url_for('app_views.auth.logout') }}">Log Out</a> </li>
-          <li><a>{{ g.user['first_name'] }}</a> </li>
+          <li><a class="active">{{ g.user['first_name'] }}</a> </li>
           {% else %}
             <li><a href="{{ url_for('app_views.auth.register') }}">Register</a> </li>
             <li><a href="{{ url_for('app_views.auth.login') }}">Log In</a> </li>

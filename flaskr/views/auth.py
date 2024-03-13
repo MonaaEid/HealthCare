@@ -62,7 +62,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect('/')
+            return redirect('/doctors')
 
         flash(error)
 

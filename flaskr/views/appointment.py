@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-""" holds the main app """
-from flask import Flask, jsonify, request, abort, render_template, flash
-from flasgger.utils import swag_from
+""" Appointment views"""
+from flask import Flask, jsonify, request, abort, render_template, flash, redirect
 from models import storage
 from models.doctor import Doctor
 from models.appointment import Appointment
 from flaskr.views import app_views
+from .auth import login_required
 
 @app_views.route('/doctors/<doctor_id>/appointments', methods=['GET'], strict_slashes=False)
+@login_required
 def doctorAppointments(doctor_id):
     """ doctorAppointments route """
     doctor = storage.get(Doctor, doctor_id)
@@ -20,6 +21,7 @@ def doctorAppointments(doctor_id):
 
 
 @app_views.route('/appointments', methods=['GET'], strict_slashes=False)
+@login_required
 def appointments():
     """ appointments route """
     appointments = storage.query(Appointment).all()
@@ -30,10 +32,11 @@ def storeAppointment():
     """ storeAppointment route """
     if request.method == 'POST':
         doctor_id = request.form.get("doctor_id")
-        patient_id = request.form.get("patient_id")
+        # patient_id = request.form.get("patient_id")
+        patient_name = request.form.get("patient_name")
         department_id = request.form.get("department_id")
         date = request.form.get("date")
-        data = {"doctor_id": doctor_id, "date": date, "patient_id": patient_id, "department_id": department_id}
+        data = {"doctor_id": doctor_id, "date": date, "patient_name": patient_name, "department_id": department_id}
         instance = Appointment(**data)
         instance.save()
         return jsonify(data), 201
@@ -55,30 +58,31 @@ def appointmentById(doctor_id, appointment_id):
 
 
 
-@app_views.route('/doctors/<doctor_id>/appointments/<appointment_id>', methods=['DELETE'], strict_slashes=False)
-def deleteAppointment(doctor_id, appointment_id):
+@app_views.route('/appointment/<appointment_id>/del', methods=['POST'], strict_slashes=False)
+def deleteAppointment(appointment_id):
     """ deleteAppointment route """
-    doctor = storage.get(Doctor, doctor_id)
-    if doctor is None:
-        abort(404)
     appointment = storage.get(Appointment, appointment_id)
     if appointment is None:
         abort(404)
     appointment.delete()
     storage.save()
-    return jsonify({}), 200
+    return redirect('/appointments')
 
 
-@app_views.route('/doctors/<doctor_id>/appointments/<appointment_id>', methods=['PUT'], strict_slashes=False)
-def updateAppointment(doctor_id, appointment_id):
+@app_views.route('appointment/<appointment_id>', methods=['POST', 'GET'], strict_slashes=False)
+def updateAppointment(appointment_id):
     """ updateAppointment route """
-    doctor = storage.get(Doctor, doctor_id)
-    if doctor is None:
-        abort(404)
-    appointment = storage.get(Appointment, appointment_id)
+    appointment = storage.query(Appointment).filter(Appointment.id == appointment_id).first()
+
     if appointment is None:
         abort(404)
-    appointment.date = request.form.get("date")
-    appointment.time = request.form.get("time")
-    appointment.save()
-    return jsonify(appointment.to_dict()), 200
+    if request.method == 'GET':
+        return render_template('appointment/updateAppointment.html', appointment=appointment)
+    if request.method == 'POST':
+        appointment = storage.get(Appointment, appointment_id)
+        appointment.doctor_id = request.form.get("doctor_id")
+        appointment.date = request.form.get("date")
+        appointment.patient_name = request.form.get("patient_name")
+        appointment.department_id = request.form.get("department_id")
+        appointment.save()
+        return redirect('/appointments')

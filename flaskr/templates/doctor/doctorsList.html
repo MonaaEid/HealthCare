@@ -1,15 +1,12 @@
 {% extends "layout.html" %}
 {% block header %}
-<div  class="headline">
-
-    <h1>Doctor List</h1>
-</div>
-<input type="button" value="Add doctor record" onclick="window.location.href='/doctor'">
-
-{% endblock %}
-{% block content %}
-
-<table>
+<div class="outer-wrapper">
+    <div class="header">
+    <input type="button" value="Add doctor record" onclick="window.location.href='/doctor'">
+    </div>
+    <div class="table-wrapper">
+    <table id="emp-table">
+    <h2>Doctor List</h2>
     <tr>
         <th>Doctor Name</th>
         <th>Doctor Salary</th>
@@ -27,12 +24,15 @@
         <td>{{ doctor.phone }}</td>
         <td>{{ doctor.email }}</td>
         <td>{{ doctor.address }}</td>
-        <!-- <td><a href="/doctors/{{doctor.id}}/del/">Delete</a></td> -->
-        <td><a href="/doctors/{{ doctor.id }}">Edit</a></td>
-        <td><form action="/doctors/{{ doctor.id }}/del" method="post" enctype="multipart/form-data"> <input type="submit" value="Delete"></form></td>
-        <td><a href="/doctors/{{ doctor.id }}/appointments">Appointments</a></td>
+        <td><button class="btn btn-warning"><a href="/doctors/{{ doctor.id }}" style="color: white">Edit</a></button></td>
+        <!-- <td><button class="btn btn-danger"><a href="/doctors/{{ doctor.id }}/del/" style="color: white">Delete</a></button></td> -->
+        <td><form action="/doctors/{{ doctor.id }}/del" method="post" enctype="multipart/form-data"> <input style="background-color: #d9534f;" class="btn" type="submit" value="Delete"></form></td>
+        <td> <button class="btn btn-primary"> <a href="/doctors/{{ doctor.id }}/appointments" style="color: white">Appointments</a></button></td>
 
     </tr>
     {% endfor %}
 </table>
+</div>
+</div> 
 {% endblock %}
+

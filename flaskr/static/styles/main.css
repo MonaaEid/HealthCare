@@ -2,184 +2,348 @@
 
 /* Reset default margin and padding */
 body, ul {
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+}
+
+/* Set a background color for the body */
+body {
+  background-color: #f5f5f5;
+}
+.containerdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Header Styling */
+.header-area {
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-area a {
+  display: inline-block;
+}
+
+.header-area img {
+  max-width: 150px;
+  height: auto;
+}
+
+/* Style the side navigation */
+.side-nav {
+  background-color: #C0C0C0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #555555;
+  border-bottom: 1px solid #555555;
+  margin-bottom: 30px;
+}
+
+.side-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Make the navigation horizontal */
+}
+
+.side-nav li {
+  position: relative;
+}
+
+.side-nav a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #111111;
+  transition: background-color 0.3s ease;
+
+}
+
+.side-nav a:hover {
+  background-color: #87CEEB;
+}
+
+.side-nav .active {
+  background-color: #00B894;
+}
+
+
+/* Style the dashboard containers */
+.dashboard-container {
+  display: flex; /* Use flexbox for the horizontal layout */
+}
+
+.dashboard-container .dashboard {
+  border: 2px solid #333333;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: background-color 0.3s ease; /* Add transition for smooth color change */
+  flex-basis: 33.33%; /* Set the width to 33.33% of the container */
+  margin-right: 20px; /* Add spacing between the dashboards */
+}
+
+.dashboard-container .dashboard:last-child {
+  margin-right: 0; /* Remove spacing for the last dashboard */
+}
+
+.dashboard-container .dashboard:hover {
+  background-color: #888888; /* Change background color on hover */
+}
+
+.dashboard-container .dashboard h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+
+
+
+/*style of filter */
+
+.outer-wrapper {
+position: relative;
+margin: 40px auto;
+padding: 20px;
+margin-left: 200px;
+border: 1px solid black;
+border-radius: 4px;
+box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.9);
+/* max-width: 1100px; */
+background-color: #f2f2f2;
+}
+
+.header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 10px;
+}
+
+.table-button {
+padding: 10px 20px;
+background-color: #333;
+color: #fff;
+border: none;
+border-radius: 4px;
+font-size: 16px;
+cursor: pointer;
+}
+
+.table-wrapper {
+overflow-y: scroll;
+overflow-x: scroll;
+height: fit-content;
+max-height: 66.4vh;
+margin-top: 22px;
+margin: 15px;
+padding-bottom: 20px;
+}
+
+table {
   
-  /* Set a background color for the body */
-  body {
-    background-color: #f5f5f5;
-  }
-  .containerdiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+  min-width: max-content;
   
-  /* Header Styling */
-  .header-area {
-    background-color: #ffffff;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+  border-collapse: separate;
+  border-spacing: 0px;    
   
-  .header-area a {
-    display: inline-block;
-  }
+}
+
+.table-filter {
+  border-radius: 5px;
+}
+
+table th{
+  position: sticky; 
+  top: 0px;
   
-  .header-area img {
-    max-width: 150px;
-    height: auto;
-  }
+  background-color: #133b5c;
+  color: rgb(241, 245, 179);
   
-  /* Style the side navigation */
-  .side-nav {
-    background-color: #C0C0C0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    border-top: 1px solid #555555;
-    border-bottom: 1px solid #555555;
-    margin-bottom: 30px;
-  }
+  text-align: center;
+  font-weight: normal;
+  font-size: 18px;
+  outline: 0.7px solid black;
+  border: 1.5px solid black;
+
+} 
+
+
+
+table th, table td {
   
-  .side-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex; /* Make the navigation horizontal */
-  }
+  padding: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   
-  .side-nav li {
-    position: relative;
-  }
+}
+
+table td {
+  text-align: left;
   
-  .side-nav a {
-    display: block;
-    padding: 15px;
-    text-decoration: none;
-    color: #111111;
-    transition: background-color 0.3s ease;
+  font-size: 15px;
+  border: 1px solid rgb(177, 177, 177);
+  padding-left: 20px;
   
-  }
-  
-  .side-nav a:hover {
-    background-color: #87CEEB;
-  }
-  
-  .side-nav .active {
-    background-color: #00B894;
-  }
-  
-  
-  /* Style the dashboard containers */
-  .dashboard-container {
-    display: flex; /* Use flexbox for the horizontal layout */
-  }
-  
-  .dashboard-container .dashboard {
-    border: 2px solid #333333;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    transition: background-color 0.3s ease; /* Add transition for smooth color change */
-    flex-basis: 33.33%; /* Set the width to 33.33% of the container */
-    margin-right: 20px; /* Add spacing between the dashboards */
-  }
-  
-  .dashboard-container .dashboard:last-child {
-    margin-right: 0; /* Remove spacing for the last dashboard */
-  }
-  
-  .dashboard-container .dashboard:hover {
-    background-color: #888888; /* Change background color on hover */
-  }
-  
-  .dashboard-container .dashboard h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  
-  /*style of filter */
-  
-  .outer-wrapper {
-      margin-top: 40px;
-      margin-left: 20px;
-      margin-right: 20px;
-      border: 1px solid black;
-      border-radius: 4px;
-      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.9);
-      max-width: fit-content;
-      max-height: fit-content;
-      /* center the table */
-      margin-left: auto;
-      margin-right: auto;
-  
-      
-  }
-  .table-wrapper {
-  
-      overflow-y: scroll;
-      overflow-x: scroll;
-      height: fit-content;
-      max-height: 66.4vh;
-      
-      margin-top: 22px;
-      
-      margin: 15px;
-      padding-bottom: 20px;
-      
-  }
-  
-  
-  table {
-      
-      min-width: max-content;
-      
-      border-collapse: separate;
-      border-spacing: 0px;    
-      
-  }
-  
-  .table-filter {
-      border-radius: 5px;
-  }
-  
-  table th{
-      position: sticky; 
-      top: 0px;
-      
-      background-color: #133b5c;
-      color: rgb(241, 245, 179);
-      
-      text-align: center;
-      font-weight: normal;
-      font-size: 18px;
-      outline: 0.7px solid black;
-      border: 1.5px solid black;
-  
-  } 
-  
-  
-  
-  table th, table td {
-      
-      padding: 15px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      
-  }
-  
-  table td {
-      text-align: left;
-      
-      font-size: 15px;
-      border: 1px solid rgb(177, 177, 177);
-      padding-left: 20px;
-      
-  }
+}
+
+/* Styles for the table footer */
+tfoot {
+background-color: #f2f2f2;
+text-align: center;
+padding: 15px;
+}
+
+tfoot th {
+font-weight: bold;
+font-size: 16px;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+/* style of doctor form */
+.container {
+max-width: 600px;
+margin: 0 auto;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
+
+h1 {
+text-align: center;
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+label {
+font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select {
+width: 100%;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+
+input[type="radio"] {
+margin-right: 5px;
+}
+
+.btn-primary {
+background-color: #007bff;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+
+.btn-primary:hover {
+background-color: #0069d9;
+}
+
+.error-message {
+color: red;
+}
+
+/* log in style */
+
+.container {
+max-width: 400px;
+margin: 0 auto;
+padding: 40px;
+background-color: #f2f2f2;
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+display: block;
+font-weight: bold;
+margin-bottom: 10px;
+color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+margin-bottom: 20px;
+}
+
+input[type="submit"] {
+background-color: #4CAF50;
+color: #fff;
+border: none;
+border-radius: 4px;
+padding: 12px 20px;
+cursor: pointer;
+font-size: 16px;
+font-weight: bold;
+transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+background-color: #45a049;
+}
+/* style for register */
+/* Styles for the form container */
+.container2 {
+max-width: 400px;
+margin: 0 auto;
+padding: 40px;
+background-color: #f2f2f2;
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+display: block;
+font-weight: bold;
+margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+margin-bottom: 20px;
+}
+
+input[type="submit"] {
+background-color: #4CAF50;
+color: #fff;
+border: none;
+border-radius: 4px;
+padding: 12px 20px;
+cursor: pointer;
+font-size: 16px;
+font-weight: bold;
+transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+background-color: #45a049;
+}

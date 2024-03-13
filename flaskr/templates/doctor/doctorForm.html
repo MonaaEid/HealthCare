@@ -1,120 +1,131 @@
-
 {% if flag == 0 %}
-<h1>Add Doctor record</h1>
-
 <div class="container">
-
-<form class="form-horizontal" action="/doctor" method="post">
-
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="name">name:</label>
+    <h1>Add Doctor Record</h1>
+  
+    <form class="form-horizontal" action="/doctor" method="post">
+  
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="name">Name:</label>
         <div class="col-sm-10">
-            <input type="text" name="name" id="name" class="form-control">
+          <input type="text" name="name" id="name" class="form-control" required>
         </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="email">email:</label>
+      </div>
+  
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Email:</label>
         <div class="col-sm-10">
-            <input type="text" name="email" id="email" class="form-control">
+          <input type="email" name="email" id="email" class="form-control" required>
         </div>
-    </div>
-
-    <div class="form-group">    
+      </div>
+  
+      <div class="form-group">
         <label class="control-label col-sm-2" for="salary">Salary:</label>
         <div class="col-sm-10">
-            <input type="text" name="salary" id="salary" class="form-control">
+          <input type="text" name="salary" id="salary" class="form-control" required>
         </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="phone">phone:</label>
+      </div>
+  
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="phone">Phone:</label>
         <div class="col-sm-10">
-            <input type="text" name="phone" id="phone" class="form-control">
+          <input type="text" name="phone" id="phone" class="form-control" required>
         </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="address">address:</label>
+      </div>
+  
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="address">Address:</label>
         <div class="col-sm-10">
-            <input type="text" name="address" id="address" class="form-control">
+          <input type="text" name="address" id="address" class="form-control" required>
         </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="birthdate">birthdate:</label>
+      </div>
+  
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="birthdate">Birthdate:</label>
         <div class="col-sm-10">
-            <input type="date" name="birthdate" id="birthdate" class="form-control">
+          <input type="date" name="birthdate" id="birthdate" class="form-control" required>
         </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="gender">gender:</label>
-        Female<input type="radio" name="gender" value="F" id ="gender"> 
-        Male<input type="radio" value="M" name="gender">
-    </div>
-    <div class="form-group">        
+      </div>
+  
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="gender">Gender:</label>
+        <div class="col-sm-10">
+          <label class="radio-inline">
+            <input type="radio" name="gender" value="F" required> Female
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="gender" value="M" required> Male
+          </label>
+        </div>
+      </div>
+  
+      <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <input type="submit" value="Submit" class="btn btn-default">
+          <input type="submit" value="Submit" class="btn btn-primary">
         </div>
-    </div>
-</form>
-</div>
+      </div>
+    </form>
+  </div>
 {% endif %}
 
 {% if flag == 1 %}
 <div class="container">
-    <h1>Add Doctor record</h1>
+    <h1>Edit Doctor record</h1>
 
-    <form class="form-horizontal" action="/doctor" method="post">
+    <form class="form-horizontal" action="/doctors/{{ doctor.id }}" method="post">
     
         <div class="form-group">
             <label class="control-label col-sm-2" for="name">name:</label>
             <div class="col-sm-10">
-                <input type="text" name="name" id="name" class="form-control">
+                <input type="text" name="name" value="{{ doctor.name }}" id="name" class="form-control">
             </div>
         </div>
     
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">email:</label>
             <div class="col-sm-10">
-                <input type="text" name="email" id="email" class="form-control">
+                <input type="text" name="email" value="{{ doctor.email }}" id="email" class="form-control">
             </div>
         </div>
     
         <div class="form-group">    
             <label class="control-label col-sm-2" for="salary">Salary:</label>
             <div class="col-sm-10">
-                <input type="text" name="salary" id="salary" class="form-control">
+                <input type="text" name="salary" value="{{ doctor.salary }}" id="salary" class="form-control">
             </div>
         </div>
     
         <div class="form-group">
             <label class="control-label col-sm-2" for="phone">phone:</label>
             <div class="col-sm-10">
-                <input type="text" name="phone" id="phone" class="form-control">
+                <input type="text" name="phone" value="{{ doctor.phone }}" id="phone" class="form-control">
             </div>
         </div>
     
         <div class="form-group">
             <label class="control-label col-sm-2" for="address">address:</label>
             <div class="col-sm-10">
-                <input type="text" name="address" id="address" class="form-control">
+                <input type="text" name="address" value="{{ doctor.address }}" id="address" class="form-control">
             </div>
         </div>
     
         <div class="form-group">
             <label class="control-label col-sm-2" for="birthdate">birthdate:</label>
             <div class="col-sm-10">
-                <input type="date" name="birthdate" id="birthdate" class="form-control">
+                <input type="date" name="birthdate" value="{{ doctor.birth_date }}" id="birthdate" class="form-control">
             </div>
         </div>
     
         <div class="form-group">
-            <label class="control-label col-sm-2" for="gender">gender:</label>
-            Female <input type="radio" name="gender" value="F" id ="gender"> 
-            Male <input type="radio" value="M" name="gender">
-        </div>
+            <label class="control-label col-sm-2" for="gender">Gender:</label>
+            <div class="col-sm-10">
+              <label class="radio-inline">
+                <input type="radio" name="gender" value="F" required> Female
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="gender" value="M" required> Male
+              </label>
+            </div>
+          </div>
         <div class="form-group">        
             <div class="col-sm-offset-2 col-sm-10">
                 <input type="submit" value="Submit" class="btn btn-default">
