@@ -3,11 +3,10 @@
 from models.base_model import BaseModel, Base
 from os import getenv
 from sqlalchemy import Column, String, ForeignKey, Integer, Enum
-from sqlalchemy.orm import relationship
 
 
 class Employee(BaseModel, Base):
-    """Representation of a user """
+    """Representation of a Employee table """
     __tablename__ = 'employees'
     name = Column(String(128), nullable=False) #exist
     birth_date = Column(String(128)) #exist

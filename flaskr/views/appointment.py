@@ -39,7 +39,7 @@ def storeAppointment():
         data = {"doctor_id": doctor_id, "date": date, "patient_name": patient_name, "department_id": department_id}
         instance = Appointment(**data)
         instance.save()
-        return jsonify(data), 201
+        return redirect('/appointments')
     doctors = [doctor.to_dict() for doctor in storage.all("Doctor").values()]
     departments = [department.to_dict() for department in storage.all("Department").values()]
     patients = [patient.to_dict() for patient in storage.all("Patient").values()]

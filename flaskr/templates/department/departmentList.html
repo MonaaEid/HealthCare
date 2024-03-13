@@ -13,6 +13,8 @@
                 <th>Department Name</th>
                 <th>Department Description</th>
                 <th>Department Head</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -21,10 +23,8 @@
                 <td>{{ department.name }}</td>
                 <td>{{ department.description }}</td>
                 <td>{{ department.doctor.name}}</td>
-                <td>
-                    <td><form action="/departments/{{ department.id }}/del" method="post" enctype="multipart/form-data"> 
+                <td><form action="/departments/{{ department.id }}/del" method="post" enctype="multipart/form-data"> 
                         <input style="background-color: #d9534f;" class="btn" type="submit" value="Delete"></form></td>
-                </td>
             </tr>
             {% endfor %}
         </tbody>

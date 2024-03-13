@@ -25,7 +25,7 @@ def storeDepartment():
         data = {"name": name, "description": description, "department_head_id": department_head_id }
         instance = Department(**data)
         instance.save()
-        return jsonify(data), 201
+        return redirect('/departments')
     doctors = [doctor.to_dict() for doctor in storage.all("Doctor").values()]
     return render_template('department/addDepartment.html', doctors=doctors)
 
