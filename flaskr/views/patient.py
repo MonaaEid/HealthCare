@@ -29,7 +29,8 @@ def storePatient():
         birth_date = request.form.get("birthdate")
         phone = request.form.get("phone")
         gender = request.form.get("gender")
-        data = {"name": name, "birth_date": birth_date, "phone": phone, "gender": gender}
+        address = request.form.get("address")
+        data = {"name": name, "birth_date": birth_date, "phone": phone, "gender": gender, "address": address}
         instance = Patient(**data)
         instance.save()
         return redirect('/patients')
@@ -61,5 +62,6 @@ def updatePatient(patient_id):
         patient.birth_date = request.form.get("birthdate")
         patient.phone = request.form.get("phone")
         patient.gender = request.form.get("gender")
+        patient.address = request.form.get("address")
         patient.save()
         return redirect('/patients')
