@@ -50,6 +50,7 @@ Run the application:
     $ gunicorn --bind 0.0.0.0:5000 flaskr.app:app
 
 
+<img src="flaskr/static/images/index.png" >
 <img src="flaskr/static/images/appointments.png" >
 
 ## Contributing
