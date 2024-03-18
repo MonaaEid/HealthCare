@@ -9,6 +9,7 @@
 ### linux:
 
 Installing flask:
+
     $ pip3 install flask
 
 
@@ -20,10 +21,12 @@ Installing mysql:
 
 
 Installing SQLAlchemy:
-    pip3 install SQLAlchemy
+
+    $ pip3 install SQLAlchemy
 
 Installing gunicorn:
-    pip3 install gunicorn
+
+    $ pip3 install gunicorn
 
 ## Usage:
 
@@ -33,12 +36,14 @@ First clone the repository from Github and switch to the new directory:
     $ cd Hospital-Mangement-System
 
 Start gunicorn:
+
     $ sudo systemctl daemon-reload
     $ sudo systemctl enable gunicorn
     $ sudo systemctl start gunicorn
     $ sudo systemctl status gunicorn
 
 Run the application:
+
     $ gunicorn --bind 0.0.0.0:5000 flaskr.app:app
 
 ## Contributing
