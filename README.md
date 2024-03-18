@@ -54,6 +54,6 @@ Run the application:
 <img src="flaskr/static/images/appointments.png" >
 
 ## Contributing
-### Mohamed Nasef
 ### Mona Eid
+### Mohamed Nasef
 
