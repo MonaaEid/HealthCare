@@ -1,8 +1,11 @@
 # Hospital Management System
 
 <a href="http://monaeid.tech/">
-<img src="flaskr/static/images/hospital-logo.png" > 
+<img src="flaskr/static/images/hospital-logo.png" >
 </a>
+
+### The Hospital System Project is a comprehensive software solution designed to streamline and optimize various aspects of hospital management.
+### It aims to improve the efficiency of administrative tasks, enhance patient care, and facilitate seamless communication between healthcare professionals.
 
 ## Installation
 
@@ -46,8 +49,10 @@ Run the application:
 
     $ gunicorn --bind 0.0.0.0:5000 flaskr.app:app
 
+
+<img src="flaskr/static/images/appointments.png" >
+
 ## Contributing
 ### Mohamed Nasef
 ### Mona Eid
-
 
